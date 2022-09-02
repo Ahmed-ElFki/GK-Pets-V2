@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Container, Row } from "react-bootstrap";
-import { PetsDataArray } from "../PetsData/PetsDataArray";
 import PetCard from "./PetCard";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { PetsContext } from "./PetsContext";
 
 function PetsList() {
+  // eslint-disable-next-line
+  const { pets, setPets } = useContext(PetsContext);
+
   return (
     <Container>
       <Row>
-        {PetsDataArray.map((pet) => (
+        {pets.map((pet) => (
           <PetCard
+            key={pet.id}
+            id={pet.id}
             name={pet.name}
             race={pet.race}
             type={pet.type}
